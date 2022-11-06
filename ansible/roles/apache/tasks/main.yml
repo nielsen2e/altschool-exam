@@ -1,0 +1,29 @@
+#Apache Configuration
+- name: Install Apache Package
+  apt:
+    name: apache2
+    update_cache: yes 
+    state: latest
+
+- name: Sets laravel virtual host
+  template:
+    src: templates/apache.conf.j2
+    dest: "/etc/apache2/sites-available/{{ http_conf }}"
+
+- name: Enables new site
+  file:
+    src: "/etc/apache2/sites-available/{{ http_conf }}"
+    dest: "/etc/apache2/sites-enabled/{{ http_conf }}"
+    state: link
+  notify: Reload apache
+
+- name: Removes default apache site
+  file:
+    path: "/etc/apache2/sites-enabled/000-default.conf"
+    state: absent
+  notify: Reload apache
+
+- name: Rewrite file
+  shell: a2enmod rewrite
+  become: yes
+  notify: Restart apache2

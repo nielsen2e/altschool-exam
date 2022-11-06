@@ -1,0 +1,8 @@
+[all]
+target_node ansible_ssh_host=54.242.74.116 
+
+[all:vars]
+ansible_ssh_user=ubuntu
+ansible_ssh_private_key_file=laravelkeys
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_port=22

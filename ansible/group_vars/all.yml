@@ -1,0 +1,28 @@
+---
+# Initial Server Setup
+remote_user: ansible
+
+# MySQL Setup
+mysql_root_password: "123456Chioma"
+mysql_databases:
+  - name: laraveldbserver
+mysql_users:
+  - name: laraveldbuser
+    host: "%"
+    password: laravel123db
+    priv: "laraveldbserver.*:ALL"
+
+# Web Server Setup
+http_host: "100.25.219.90"
+remote_www_root: /var/www
+app_root_dir: laravel-realworld-example-app
+document_root: "{{ remote_www_root }}/{{ app_root_dir }}/public"
+
+# Laravel Env Variables
+app_name: "laravel Realworld Example App"
+app_env: production
+app_debug: true
+app_url: "http://{{ http_host }}"
+db_host: 127.0.0.1
+db_port: 3306
+

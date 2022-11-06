@@ -1,0 +1,11 @@
+- name: Copy file to remote src
+  template:
+    src: "postgres_set.sh"
+    dest: "/home/ubuntu/postgres_set.sh"
+    owner: ubuntu
+    
+- name: Run postgres script
+  tags:
+    - postgres
+    - run_postgres
+  script: postgres_set.sh

@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - { role: apache, tags: ['apache', 'web', 'http', 'lamp'] }
+
+    - { role: php, tags: ['php', 'web', 'lamp'] }
+
+    - { role:  geerlingguy.mysql, tags: ['mysql', 'db', 'lamp'] }
+
+    - { role: composer, tags: ['composer'] }
+
+    - { role: deploy_laravel, tags: ['lamp'] } 
+
+    - { role: postgres }

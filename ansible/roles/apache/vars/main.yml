@@ -1,0 +1,5 @@
+---
+http_conf: laravel.conf
+http_port: "80"
+http_host: "100.25.219.90"
+document_root: /var/www/laravel-realworld-example-app/public
